@@ -44,5 +44,31 @@ public class AnimalTest {
       assertTrue(Animal.all().get(0).equals(testAnimal));
   }
 
+  @Test
+
+  public void all_returnsAllInstancesOfAnimal_true() {
+    Animal firstAnimal = new Animal("Rhino", "healthy", "young");
+    Animal secondAnimal = new Animal("Giraffe", "healthy", "young");
+    assertEquals(true, Animal.all().get(0).equals(firstAnimal));
+    assertEquals(true, Animal.all().get(1).equals(secondAnimal));
+  }
+
+  @Test
+  public void save_assignsIdToObject() {
+    Animal testAnimal = new Animal("Rhino", "healthy", "young");
+    testAnimal.save();
+    Animal savedAnimal = Animal.all().get(0);
+    assertEquals(testAnimal.getId(), savedAnimal.getId());
+  }
+
+  @Test
+  public void find_returnsAnimalWithSameId_secondAnimal() {
+    Animal firstAnimal = new Animal("Rhino", "healthy", "young");
+    firstAnimal.save();
+    Animal secondAnimal = new Animal("Giraffe", "healthy", "young");
+    secondAnimal.save();
+    assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
+  }
+
 
 }
