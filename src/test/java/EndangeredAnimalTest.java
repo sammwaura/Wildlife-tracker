@@ -88,6 +88,58 @@ public class EndangeredAnimal {
         assertTrue(EndangeredAnimal(savedEndangeredAnimal.getAnimalId(),testPerson.getId());
     }
 
+    @Test 
+    public void endangeredanimal_instantiatesWithhalffullhealthylevel(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        assertEquals(testEndangeredAnimal.gethealthylevel(), (EndangeredAnimal.MAX_HEALTHY_LEVEL / 4));
+    }
 
+
+    @Test 
+    public void endangeredanimal_instantiatesWithHalfFullIlllevel(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        assertEquals(testEndangeredAnimal.getilllevel(), (EndangeredAnimal.MAX_ILL_LEVEL / 4));
+    }
+
+
+    @Test 
+    public void endangeredanimal_instantiatesWithHalfFullOkaylevel(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        assertEquals(testEndangeredAnimal.getokaylevel(), (EndangeredAnimal.MAX_OKAY_LEVEL / 4));
+    }
+
+
+    @Test 
+    public void isAlive_confirmsEndangeredAnimalISAlivelIfAllLevelsAboveMinimum_true(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        assertEquals(testEndangeredAnimal.isAlive(), true);
+    }
+
+    @Test 
+    public void depleteLevels_reducesAllLevels(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        testEndangeredAnimal.depleteLevels();
+        assertEquals(testEndangeredAnimal.gethealthylevel(), (EndangeredAnimal.MAX_HEALTHY_LEVEL / 4) -1);
+        assertEquals(testEndangeredAnimal.getilllevel(), (EndangeredAnimal.MAX_ILL_LEVEL / 4) -1);
+        assertEquals(testEndangeredAnimal.getokaylevel(), (EndangeredAnimal.MAX_OKAY_LEVEL / 4) -1);
+    }
+
+    @Test 
+    public void isAlive_recognizesEndangeredAnimalIsDeadWhenLevelsReachMinimum_false(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+    for(int i = EndangeredAnimal.MIN_ALL_LEVELS; i <= EndangeredAnimal.MAX_HEALTHY_LEVEL; i++){
+        testEndangeredAnimal.depleteLevels();
+    }
+        assertEquals(testEndangeredAnimal.isAlive(), false);
+    }
+
+    @Test
+    public void endangeredanimal_healthyLevelCannotGoBeyondMaxValue(){
+        EndangeredAnimal testEndangeredAnimal = new EndangeredAnimal("Rhino", "healthy", "young",1);
+        for(int i = EndangeredAnimal.MIN_ALL_LEVELS; i <= (EndangeredAnimal.MAX_HEALTHY_LEVEL + 2); i++) {
+            testEndangeredAnimal.health();
+        }  
+        assertTrue(testEndangeredAnimal.gethealthylevel() <= EndangeredAnimal.MAX_HEALTHY_LEVEL);
+    }
 
 }

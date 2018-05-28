@@ -8,6 +8,9 @@ public class EndangeredAnimal{
     private String age;
     private int animalId;
     private int id;
+    private int healthylevel;
+    private int illlevel;
+    private int okaylevel;
 
     public EndangeredAnimal(String name, String health, String age, int animalId, int id) {
         this.name = name;
@@ -15,6 +18,9 @@ public class EndangeredAnimal{
         this.age = age;
         this.animalId = animalId;
         this.id = id;
+        healthylevel = MAX_HEALTHY_LEVEL / 4;
+        illlevel = MAX_ILL_LEVEL / 4 ;
+        okaylevel = MAX_OKAY_LEVEL /4;
 
     }
 
@@ -37,6 +43,38 @@ public class EndangeredAnimal{
     public int getId(){
         return id;
     }
+
+    public int getHealthyLevel(){
+        return healthylevel;
+    }
+    
+    public int getIllLevel(){
+        return illlevel;
+    }
+
+    public int getOkayLevel(){
+        return okaylevel;
+    }
+
+    public static final int MAX_HEALTHY_LEVEL = 5;
+    public static final int MAX_ILL_LEVEL = 5;
+    public static final int MAX_OKAY_LEVEL = 5;
+    public static final int MIN_ALL_LEVELS = 0;
+
+    public boolean isAlive() {
+        if (healthylevel <= MIN_ALL_LEVELS ||
+        illlevel <= MIN_ALL_LEVELS ||
+        okaylevel <= MIN_ALL_LEVELS) {
+            return false;
+        }
+        return true;
+        }
+
+        public void depleteLevels(){
+            healthylevel--;
+            illlevel--;
+            okaylevel--;
+        }
 
     @Override
     public boolean equals(Object otherEndangeredAnimal){
@@ -79,6 +117,6 @@ public class EndangeredAnimal{
         }
       }
 
-      
+
 
 }
