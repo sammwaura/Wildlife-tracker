@@ -71,5 +71,12 @@ public class  Animal {
             }
           }
 
+          public  List<EndangeredAnimal> gEndangeredAnimals() {
+            String sql = "SELECT * FROM endangeredAnimals where animalId=:id";
+            try(Connection con = DB.sql2o.open()) {
+             return con.createQuery(sql).executeAndFetch(EndangeredAnimal.class);
+            }
+          }
+
 
     }

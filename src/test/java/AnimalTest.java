@@ -70,5 +70,17 @@ public class AnimalTest {
     assertEquals(Animal.find(secondAnimal.getId()), secondAnimal);
   }
 
+  @Test
+  public void getEndangeredAnimal_retrievesAllEndangeredAnimalFromDatabase_endangeredanimalList() {
+      Animal testAnimal = new Animal(("Rhino", "healthy", "young");
+      testAnimal.save();
+      EndangeredAnimal firstEndangeredAnimal = new EndangeredAnimal("Tiger", "healthy", "young", 1, testAnimal.getId());
+      firstEndangeredAnimal.save();
+      EndangeredAnimal secondEndangeredAnimal = new EndangeredAnimal("Giraffe", "healthy", "young", 1, testAnimal.getId());
+      secondEndangeredAnimal.save();
+      EndangeredAnimal[] endangeredAnimals = new EndangeredAnimal[] { firstEndangeredAnimal, secondEndangeredAnimal };
+      assertTrue(testAnimal.getEndangeredAnimals().containsAll(Arrays.asList(endangeredAnimals)));
+  }
+
 
 }
