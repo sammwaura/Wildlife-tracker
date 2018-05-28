@@ -1,0 +1,48 @@
+import org.junit.*;
+import static org.junit.Assert.*;
+import org.sql2o.*;
+
+public class AnimalTest {
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();  
+
+  @Test
+  public void animal_instantiatesCorrectly_true() {
+    Animal testAnimal = new Animal("Rhino", "healthy", "young");
+    assertEquals(true, testAnimal instanceof Animal);
+  }
+
+  @Test
+  public void getName_animalInstantiatesWithName_Rhino() {
+      Animal testAnimal = new Animal("Rhino", "healthy", "young");
+      assertEquals("Rhino", testAnimal.getName());
+  }
+
+  @Test
+  public void getHealth_animalInstantiatesWithHealth_healthy() {
+      Animal testAnimal = new Animal("Rhino", "healthy", "young");
+      assertEquals("healthy", testAnimal.getHealth());
+  }
+
+  @Test
+  public void getAge_animalInstantiatesWithAge_young(){
+    Animal testAnimal = new Animal("Rhino", "healthy", "young");
+    assertEquals("young", testAnimal.getAge());
+  }
+  @Test
+  public void equals_returnsTrueIfNameHealthAgeAreSame_true() {
+      Animal firstAnimal = new Animal("Rhino", "healthy", "young");
+      Animal anotherAnimal = new Animal("Giraffe", "healthy", "young");
+      assertTrue(firstAnimal.equals(anotherAnimal));
+  }
+
+  @Test
+  public void save_insertsObjectIntoDatabase_Animal() {
+      Animal testAnimal = new Animal("Rhino", "healthy", "young");
+      testAnimal.save();
+      assertTrue(Animal.all().get(0).equals(testAnimal));
+  }
+
+
+}

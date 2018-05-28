@@ -1,0 +1,8 @@
+#Fri May 25 11:36:08 EAT 2018
+connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/home/mesh/.sdkman/candidates/gradle/current))
+override.workspace.settings=true
+auto.sync=false
+gradle.user.home=
+connection.project.dir=
+offline.mode=false
+build.scans.enabled=false
