@@ -1,0 +1,28 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "Wildlife-tracker",
+                "projectName": "Wildlife-tracker",
+                "workingDirectory": "/home/mesh/Documents/JAVA/Wildlife-tracker",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "Wildlife-tracker",
+                "projectName": "Wildlife-tracker",
+                "workingDirectory": "/home/mesh/Documents/JAVA/Wildlife-tracker",
+                "args": [],
+                "vmargs": [],
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

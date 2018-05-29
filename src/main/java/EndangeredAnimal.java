@@ -12,7 +12,8 @@ public class EndangeredAnimal{
     private int illlevel;
     private int okaylevel;
 
-    public EndangeredAnimal(String name, String health, String age, int animalId, int id) {
+    public EndangeredAnimal(String name, String health, String age, int animalId, int id) 
+     {
         this.name = name;
         this.health = health;
         this.age = age;
