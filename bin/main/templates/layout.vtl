@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Wildlife Tracker</title>
-    <link rel="icon" type="image/x-icon" href="/images/wildlifelogo.jpeg">
-
-       <link rel="stylesheet" href='/app.css'>
-    </head>
-<body>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel='stylesheet' href="/app.css">
+  </head>
+  <body>
     <div class="container">
-      	#parse( $template )
+
+      #parse( $template )
+
     </div>
-    <footer class="footer"><p>&copy; 2018 All Rights Reserved. Moringa School, Wildlife Tracker Project. Developed by Mwaura Samuel.</p></footer>
-
-<script src="/js/jquery-1.11.1.min.js"></script>
-<script>
-    jQuery(document).ready(function() {
-    
-    "use strict";
-
-    $('.endangered-details').hide();
-  
-    jQuery('input#yes').click(function(){
-        $('.endangered-details').show();
-    });
-    jQuery('input#no').click(function(){
-        $('.endangered-details').hide();
-     });});
-</script>
-</body>
+  </body>
 </html>
