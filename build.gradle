@@ -1,10 +1,20 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'jacoco'
+
 
 archivesBaseName = "Wildlife-tracker"
 version = '1.0'
 applicationName = "Wildlife-tracker"
 mainClassName = "App"
+
+jacocoTestReport{
+  reports {
+    xml.enabled false
+    csv.enabled false
+    html.destination "${buildDir}/jacocoHtml"
+  }
+}
 
 repositories {
   mavenCentral()

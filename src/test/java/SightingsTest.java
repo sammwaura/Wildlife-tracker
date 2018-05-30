@@ -8,24 +8,24 @@ public class SightingsTest{
 
     @Test
     public void animal_animalInstanciatesCorrectly_true(){
-        Sightings testSightings = new Sightings("Albert", "North",3);
+        Sightings testSightings = new Sightings("Allan", "South",3);
         assertTrue(testSightings instanceof Sightings);
     }
 
     @Test
     public void getName_returnsTheName_String(){
-        Sightings testSightings = new Sightings("Albert", "North",3);
-        assertEquals("Albert", testSightings.getName()); 
+        Sightings testSightings = new Sightings("Allan", "South",3);
+        assertEquals("Allan", testSightings.getName()); 
     }
 
     @Test
     public void getId_returnsTheCorrectId_int(){
-        Sightings testSightings = new Sightings("Albert", "North",3);
+        Sightings testSightings = new Sightings("Allan", "South",3);
         assertEquals(3, testSightings.getanimalId()); 
     }
     @Test
     public void getLocation_returnTheCorrectLocation_String(){
-        Sightings testSightings = new Sightings("Albert", "North",3);
-        assertEquals("North", testSightings.getLocation());
+        Sightings testSightings = new Sightings("Allan", "South",3);
+        assertEquals("South", testSightings.getLocation());
     }
 }
