@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wildlife Tracker</title>
+    <link rel="icon" type="image/x-icon" href="/images/wildlifeLogo.png">
+    <link rel='stylesheet' href='/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='/css/bootstrap-override.css'>
+    <link rel='stylesheet' href='/css/font-awesome.css'>
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel='stylesheet' href='/css/lato.css'>
+    <link rel='stylesheet' href='/css/style.css'>
+</head>
+<body>
+    <div class="container">
+      	#parse( $template )
+    </div>
+    <footer class="footer"><p>&copy; 2018 All Rights Reserved. Moringa School, Wildlife Tracker Project. Developed by Yommie Samora.</p></footer>
+
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script>
+    jQuery(document).ready(function() {
+    
+    "use strict";
+
+    $('.endangered-details').hide();
+  
+    jQuery('input#yes').click(function(){
+        $('.endangered-details').show();
+    });
+    jQuery('input#no').click(function(){
+        $('.endangered-details').hide();
+     });});
+</script>
+</body>
+</html>
