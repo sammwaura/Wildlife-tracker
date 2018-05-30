@@ -1,3 +1,22 @@
+body{
+    background-image: url(./images/wolf2.jpg);
+    background-image: no-repeat; 
+    background-size:cover;
+    color:white;
+}
+
 .container{
-    background-image: url(./images/wildlife.jpeg);
+    background: inherit;
+}
+h1{
+    color:black;
+    font-family: 'Pacifico', cursive;
+
+
+}
+h3{
+    color:white;
+    font-family: 'Libre Baskerville', serif;
+
+
 }
