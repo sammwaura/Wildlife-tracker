@@ -3,9 +3,9 @@ apply plugin: 'application'
 apply plugin: 'jacoco'
 
 
-archivesBaseName = "Wildlife-tracker"
+archivesBaseName = "wildlife-tracker"
 version = '1.0'
-applicationName = "Wildlife-tracker"
+applicationName = "wildlife-tracker"
 mainClassName = "App"
 
 jacocoTestReport{
