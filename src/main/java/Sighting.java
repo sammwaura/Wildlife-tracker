@@ -1,79 +1,79 @@
 import org.sql2o.*;
 import java.util.List;
-import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Sighting {
-   private String ranger_name;
-   private String location;
-   private int animal_id;
-   private Timestamp timestamp;
-   private int id;
+  private int animal_id;
+  private String location;
+  private String ranger_name;
+  private int id;
 
-   public Sighting (String ranger_name, String location, int animal_id) {
-      this.ranger_name = ranger_name;
-      this.location = location;
-      this.animal_id = animal_id;
-   }
+  public Sighting(int animal_id, String location, String ranger_name) {
+    this.animal_id = animal_id;
+    this.location = location;
+    this.ranger_name = ranger_name;
+    this.id = id;
+  }
 
-   public String getRangerName() {
-      return ranger_name;
-   }
+  public int getId() {
+    return id;
+  }
 
-   public String getLocation() {
-      return location;
-   }
+  public int getAnimalId() {
+    return animal_id;
+  }
 
-   public int getAnimalId() {
-      return animal_id;
-   }
+  public String getLocation() {
+    return location;
+  }
 
-   public Timestamp getTimestamp() {
-      return timestamp;
-   }
+  public String getRangerName() {
+    return ranger_name;
+  }
 
-   public int getId() {
-      return id;
-   }
+  @Override
+  public boolean equals(Object otherSighting) {
+    if(!(otherSighting instanceof Sighting)) {
+      return false;
+    } else {
+      Sighting newSighting = (Sighting) otherSighting;
+      return this.getAnimalId() == (newSighting.getAnimalId()) && this.getLocation().equals(newSighting.getLocation()) && this.getRangerName().equals(newSighting.getRangerName());
+    }
+  }
 
-   public void save() {
-      try(Connection con = DB.sql2o.open()) {
-         String sql = "INSERT INTO sightings (ranger_name, location, animal_id, timestamp) VALUES (:ranger_name, :location, :animal_id, now())";
-         this.id = (int) con.createQuery(sql, true)
-         .addParameter("ranger_name", this.ranger_name)
-         .addParameter("location", this.location)
-         .addParameter("animal_id", this.animal_id)
-         .executeUpdate()
-         .getKey();
-      }
-   }
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO sightings (animal_id, location, ranger_name) VALUES (:animal_id, :location, :ranger_name);";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("animal_id", this.animal_id)
+        .addParameter("location", this.location)
+        .addParameter("ranger_name", this.ranger_name)
+        .throwOnMappingFailure(false)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 
-   @Override
-   public boolean equals(Object otherSighting) {
-      if (!(otherSighting instanceof Sighting)) {
-         return false;
-      } else {
-         Sighting newSighting = (Sighting) otherSighting;
-         return this.getRangerName().equals(newSighting.getRangerName()) &&
-                this.getLocation().equals(newSighting.getLocation());
-      }
-   }
+  public static List<Sighting> all() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings;";
+      return con.createQuery(sql)
+        .throwOnMappingFailure(false)
+        .executeAndFetch(Sighting.class);
+    }
+  }
 
-   public static List<Sighting> all() {
-      String sql = "select * from sightings";
-      try(Connection con = DB.sql2o.open()) {
-         return con.createQuery(sql)
-         .executeAndFetch(Sighting.class);
-      }
-   }
-
-   public static Sighting find(int id) {
-      try(Connection con = DB.sql2o.open()) {
-         String sql = "SELECT * FROM sightings WHERE id=:id";
-         Sighting blog = con.createQuery(sql)
-         .addParameter("id", id)
-         .executeAndFetchFirst(Sighting.class);
-         return blog;
-      }
-   }
+  public static Sighting find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM sightings WHERE id=:id;";
+      Sighting sighting = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Sighting.class);
+      return sighting;
+    } catch (IndexOutOfBoundsException exception) {
+      return null;
+    }
+  }
 
 }
