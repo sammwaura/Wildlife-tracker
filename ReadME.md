@@ -37,9 +37,10 @@ To use the code, you can clone the repository at: https://github.com/sammwaura/W
 * Run in terminal : postgress
 * Run in new terminal window: psql
 * Run in psql: CREATE DATABASE wildlife_tracker;
-* Run in psql: CREATE TABLE animals (id serial PRIMARY KEY, animal_name varchar, endangered varchar, animal_health varchar, animal_age varchar);
+* Run in psql: CREATE TABLE animals (id serial PRIMARY KEY, name varchar);
+* Run in psql: CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar);
+* CREATE TABLE endangered_animals (id serial PRIMARY KEY, name varchar, health varchar, age varchar);
 
-* Run in psql: CREATE TABLE sightings (id serial PRIMARY KEY, animal_id int, location varchar, ranger_name varchar, timestamp timestamp);
 
 * Run in psql: \connect wildlife_tracker
 
