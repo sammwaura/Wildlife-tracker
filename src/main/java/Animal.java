@@ -30,13 +30,13 @@ public class Animal {
       || (!animal_age.equals(EndangeredAnimal.NEWBORN)
       && !animal_age.equals(EndangeredAnimal.YOUNG)
       && !animal_age.equals(EndangeredAnimal.ADULT))) {
-         throw new IllegalArgumentException("Please enter correct details for endangered animal.");
+         throw new IllegalArgumentException("Enter correct details for endangered animal.");
       }
       else {
          return true;
       }
-   }
-
+    }
+    
    public void save() {
       try(Connection con = DB.sql2o.open()) {
          String sql = "INSERT INTO animals (animal_name, endangered) VALUES (:animal_name, :endangered)";
@@ -69,6 +69,7 @@ public class Animal {
          return true;
       }
    }
+  
 
    public static List<Animal> all() {
       String sql = "select * from animals";

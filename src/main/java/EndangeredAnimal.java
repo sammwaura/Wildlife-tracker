@@ -36,3 +36,4 @@ public class EndangeredAnimal extends Animal {
       return blog;
     }
   }
+}
